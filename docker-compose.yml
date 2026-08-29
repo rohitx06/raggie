@@ -22,10 +22,12 @@ services:
       dockerfile: Dockerfile
     container_name: rag_platform_backend
     restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       PORT: 5000
       DATABASE_URL: postgresql://rag_user:rag_password_change_me@postgres:5432/rag_platform
-      DIFY_BASE_URL: ${DIFY_BASE_URL:-http://localhost:5001/v1}
+      DIFY_BASE_URL: ${DIFY_BASE_URL:-http://host.docker.internal/v1}
       DIFY_DATASET_API_KEY: ${DIFY_DATASET_API_KEY}
       DIFY_CHAT_API_KEY: ${DIFY_CHAT_API_KEY}
     depends_on:
