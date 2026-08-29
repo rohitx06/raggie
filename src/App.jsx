@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastProvider } from './contexts/ToastContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { AppLayout } from './components/layout/AppLayout';
 
 // Pages
@@ -19,35 +20,37 @@ import { Settings } from './pages/Settings';
 export default function App() {
   return (
     <BrowserRouter>
-      <ToastProvider>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<Dashboard />} />
+      <ThemeProvider>
+        <ToastProvider>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Dashboard />} />
 
-            {/* Knowledge bases */}
-            <Route path="/knowledge" element={<KnowledgeBases />} />
-            <Route path="/knowledge/new" element={<CreateKnowledgeBase />} />
-            <Route path="/knowledge/:id" element={<KnowledgeBaseDetails />} />
-            <Route path="/knowledge/:id/documents" element={<Documents />} />
+              {/* Knowledge bases */}
+              <Route path="/knowledge" element={<KnowledgeBases />} />
+              <Route path="/knowledge/new" element={<CreateKnowledgeBase />} />
+              <Route path="/knowledge/:id" element={<KnowledgeBaseDetails />} />
+              <Route path="/knowledge/:id/documents" element={<Documents />} />
 
-            {/* Chatbots */}
-            <Route path="/chatbots" element={<Chatbots />} />
-            <Route path="/chatbots/new" element={<CreateChatbot />} />
-            <Route path="/chatbots/:id" element={<ChatbotDetails />} />
-            <Route path="/chatbots/:id/test" element={<ChatbotTest />} />
+              {/* Chatbots */}
+              <Route path="/chatbots" element={<Chatbots />} />
+              <Route path="/chatbots/new" element={<CreateChatbot />} />
+              <Route path="/chatbots/:id" element={<ChatbotDetails />} />
+              <Route path="/chatbots/:id/test" element={<ChatbotTest />} />
 
-            {/* Conversations */}
-            <Route path="/conversations" element={<Conversations />} />
-            <Route path="/conversations/:id" element={<ConversationDetails />} />
+              {/* Conversations */}
+              <Route path="/conversations" element={<Conversations />} />
+              <Route path="/conversations/:id" element={<ConversationDetails />} />
 
-            {/* Settings */}
-            <Route path="/settings" element={<Settings />} />
+              {/* Settings */}
+              <Route path="/settings" element={<Settings />} />
 
-            {/* Fallback */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </ToastProvider>
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </ToastProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

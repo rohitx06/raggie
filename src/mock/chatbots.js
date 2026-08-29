@@ -1,8 +1,8 @@
 export const mockChatbots = [
   {
     id: 'cb-001',
-    name: 'Customer Support Bot',
-    description: 'Handles general customer inquiries, returns, refunds, and shipping questions.',
+    name: 'Raggie',
+    description: 'Handles customer service inquiries, SKU inventory, order fulfillment, and policies.',
     status: 'active',
     model: 'GPT-OSS 120B',
     provider: 'Groq',

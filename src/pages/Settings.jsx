@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { User, Palette, Cpu, Database, Shield, ChevronRight, Check } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useTheme } from '../contexts/ThemeContext';
 
 const SECTIONS = [
   { key: 'profile', icon: User, label: 'Profile' },
@@ -13,6 +14,7 @@ const SECTIONS = [
 export function Settings() {
   const [active, setActive] = useState('profile');
   const [saved, setSaved] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const handleSave = () => {
     setSaved(true);
@@ -88,10 +90,23 @@ export function Settings() {
               <div>
                 <label className="label">Theme</label>
                 <div className="grid grid-cols-3 gap-3">
-                  {['Light', 'Dark', 'System'].map((t) => (
-                    <button key={t} className={cn('p-4 rounded-xl border text-sm font-medium transition-all', t === 'Light' ? 'border-brand-400 bg-brand-50 text-brand-700' : 'border-surface-200 text-surface-600 hover:border-surface-300')}>
-                      {t}
-                      {t === 'Light' && <Check className="w-4 h-4 text-brand-600 ml-auto inline-block ml-2" />}
+                  {[
+                    { id: 'light', label: 'Light' },
+                    { id: 'dark', label: 'Dark' },
+                    { id: 'system', label: 'System' },
+                  ].map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => setTheme(t.id)}
+                      className={cn(
+                        'p-4 rounded-2xl border text-sm font-semibold transition-all flex items-center justify-between',
+                        theme === t.id
+                          ? 'border-brand-500 bg-brand-50/80 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 shadow-sm'
+                          : 'border-surface-200 dark:border-surface-800 text-surface-600 dark:text-surface-400 hover:border-surface-300 dark:hover:border-surface-700'
+                      )}
+                    >
+                      {t.label}
+                      {theme === t.id && <Check className="w-4 h-4 text-brand-600 dark:text-brand-400" />}
                     </button>
                   ))}
                 </div>
