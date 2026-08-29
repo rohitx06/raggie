@@ -1,9 +1,8 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Bot,
   Database,
-  FileText,
   MessageSquare,
   Settings,
   ChevronLeft,
@@ -27,7 +26,7 @@ export function Sidebar({ collapsed, onCollapse, mobileOpen, onMobileClose }) {
       {/* Mobile Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-surface-900/40 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-surface-900/40 backdrop-blur-sm lg:hidden animate-fade-in"
           onClick={onMobileClose}
         />
       )}
@@ -35,38 +34,35 @@ export function Sidebar({ collapsed, onCollapse, mobileOpen, onMobileClose }) {
       {/* Sidebar Panel */}
       <aside
         className={cn(
-          'fixed top-0 left-0 z-40 h-screen flex flex-col bg-white border-r border-surface-200 transition-all duration-300 ease-in-out',
-          // Desktop
+          'fixed top-0 left-0 z-40 h-screen flex flex-col bg-white border-r border-surface-200/80 transition-all duration-300 ease-in-out shadow-sm',
           'lg:relative lg:translate-x-0',
           collapsed ? 'lg:w-16' : 'lg:w-60',
-          // Mobile
           mobileOpen ? 'translate-x-0 w-64' : '-translate-x-full lg:translate-x-0'
         )}
       >
         {/* Logo */}
-        <div className={cn('flex items-center gap-3 h-14 px-3 border-b border-surface-100 shrink-0')}>
-          <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center shrink-0">
-            <Sparkles className="w-4 h-4 text-white" />
+        <div className="flex items-center gap-3 h-16 px-4 border-b border-surface-100 shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shrink-0 shadow-md shadow-brand-500/20 group hover:scale-105 transition-transform">
+            <Sparkles className="w-4 h-4 text-white animate-pulse-subtle" />
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
-              <span className="font-semibold text-surface-900 text-sm leading-tight block truncate">
+              <span className="font-bold text-surface-900 text-sm leading-tight block truncate gradient-text">
                 RAG Platform
               </span>
-              <span className="text-xs text-surface-400 block truncate">Workspace</span>
+              <span className="text-[11px] text-surface-400 font-medium block truncate">Linode Cloud</span>
             </div>
           )}
-          {/* Mobile close */}
           <button
             onClick={onMobileClose}
-            className="lg:hidden text-surface-400 hover:text-surface-600 ml-auto"
+            className="lg:hidden text-surface-400 hover:text-surface-600 ml-auto p-1 rounded-lg hover:bg-surface-100 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
+        <nav className="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
           {navItems.map(({ to, icon: Icon, label, end }) => (
             <NavLink
               key={to}
@@ -75,19 +71,23 @@ export function Sidebar({ collapsed, onCollapse, mobileOpen, onMobileClose }) {
               onClick={onMobileClose}
               className={({ isActive }) =>
                 cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 group',
+                  'relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group',
                   isActive
-                    ? 'bg-brand-50 text-brand-700'
-                    : 'text-surface-600 hover:bg-surface-100 hover:text-surface-900'
+                    ? 'bg-brand-50/80 text-brand-700 font-semibold shadow-sm'
+                    : 'text-surface-600 hover:bg-surface-100/70 hover:text-surface-900 hover:translate-x-0.5'
                 )
               }
             >
               {({ isActive }) => (
                 <>
+                  {/* Left active border indicator */}
+                  {isActive && (
+                    <span className="absolute left-0 top-2 bottom-2 w-1 bg-brand-600 rounded-r-full" />
+                  )}
                   <Icon
                     className={cn(
-                      'w-4 h-4 shrink-0 transition-colors',
-                      isActive ? 'text-brand-600' : 'text-surface-400 group-hover:text-surface-600'
+                      'w-4 h-4 shrink-0 transition-transform duration-200 group-hover:scale-110',
+                      isActive ? 'text-brand-600' : 'text-surface-400 group-hover:text-surface-700'
                     )}
                   />
                   {!collapsed && <span className="truncate">{label}</span>}
@@ -97,11 +97,11 @@ export function Sidebar({ collapsed, onCollapse, mobileOpen, onMobileClose }) {
           ))}
         </nav>
 
-        {/* Collapse toggle — desktop only */}
+        {/* Collapse toggle */}
         <div className="hidden lg:flex items-center justify-end px-3 py-3 border-t border-surface-100">
           <button
             onClick={onCollapse}
-            className="p-1.5 rounded-md text-surface-400 hover:text-surface-700 hover:bg-surface-100 transition-colors"
+            className="p-2 rounded-xl text-surface-400 hover:text-surface-700 hover:bg-surface-100 transition-all hover:scale-105 active:scale-95"
             title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {collapsed ? (

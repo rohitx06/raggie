@@ -6,10 +6,10 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#f0f4ff',
-          100: '#e0e9ff',
-          200: '#c7d6fe',
-          300: '#a5b8fc',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
           400: '#818cf8',
           500: '#6366f1',
           600: '#4f46e5',
@@ -43,29 +43,41 @@ export default {
         lg: '0.75rem',
         xl: '1rem',
         '2xl': '1.25rem',
+        '3xl': '1.5rem',
       },
       boxShadow: {
-        card: '0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07)',
-        'card-hover': '0 4px 12px 0 rgb(0 0 0 / 0.10), 0 2px 4px -1px rgb(0 0 0 / 0.06)',
-        focus: '0 0 0 3px rgb(99 102 241 / 0.2)',
+        card: '0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05)',
+        'card-hover': '0 10px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04)',
+        glow: '0 0 20px -3px rgba(99, 102, 241, 0.25)',
+        'glow-emerald': '0 0 20px -3px rgba(16, 185, 129, 0.25)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.2s ease-out',
-        'slide-up': 'slideUp 0.25s ease-out',
-        'pulse-soft': 'pulseSoft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in': 'fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in-up': 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+        'scale-in': 'scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+        'pulse-subtle': 'pulseSubtle 2.5s ease-in-out infinite',
+        'bounce-subtle': 'bounceSubtle 1.5s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
           from: { opacity: 0 },
           to: { opacity: 1 },
         },
-        slideUp: {
-          from: { opacity: 0, transform: 'translateY(8px)' },
+        fadeInUp: {
+          from: { opacity: 0, transform: 'translateY(12px)' },
           to: { opacity: 1, transform: 'translateY(0)' },
         },
-        pulseSoft: {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0.5 },
+        scaleIn: {
+          from: { opacity: 0, transform: 'scale(0.96)' },
+          to: { opacity: 1, transform: 'scale(1)' },
+        },
+        pulseSubtle: {
+          '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+          '50%': { opacity: 0.85, transform: 'scale(1.02)' },
+        },
+        bounceSubtle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' },
         },
       },
     },
