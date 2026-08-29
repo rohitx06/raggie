@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: rag_platform_db
+    restart: always
+    environment:
+      POSTGRES_USER: rag_user
+      POSTGRES_PASSWORD: rag_password_change_me
+      POSTGRES_DB: rag_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Express Backend API
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: rag_platform_backend
+    restart: always
+    environment:
+      PORT: 5000
+      DATABASE_URL: postgresql://rag_user:rag_password_change_me@postgres:5432/rag_platform
+      DIFY_BASE_URL: ${DIFY_BASE_URL:-http://localhost:5001/v1}
+      DIFY_DATASET_API_KEY: ${DIFY_DATASET_API_KEY}
+      DIFY_CHAT_API_KEY: ${DIFY_CHAT_API_KEY}
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+
+  # Nginx Reverse Proxy + React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: rag_platform_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

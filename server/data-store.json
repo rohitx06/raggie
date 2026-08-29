@@ -1,0 +1,226 @@
+{
+  "knowledge_bases": [
+    {
+      "id": "kb-inventory-01",
+      "dify_dataset_id": "dify-ds-inv-001",
+      "name": "Inventory & Warehouse Management",
+      "description": "Stock policies, SKU catalog guidelines, reorder points, return logistics, and warehouse SOPs.",
+      "document_count": 12,
+      "completed_count": 12,
+      "processing_count": 0,
+      "failed_count": 0,
+      "storage_size": "18.6 MB",
+      "storage_size_bytes": 19504800,
+      "embedding_model": "BGE-small-en-v1.5",
+      "retrieval_strategy": "Hybrid Search",
+      "chunking_strategy": "Paragraph",
+      "status": "ready",
+      "created_at": "2026-08-29T14:22:00.000Z",
+      "updated_at": "2026-08-29T14:22:00.000Z"
+    },
+    {
+      "id": "kb-001",
+      "dify_dataset_id": "dify-ds-001",
+      "name": "Customer Support",
+      "description": "General customer support documentation including FAQs and policies.",
+      "document_count": 15,
+      "completed_count": 13,
+      "processing_count": 1,
+      "failed_count": 1,
+      "storage_size": "12.4 MB",
+      "storage_size_bytes": 13004800,
+      "embedding_model": "BGE-small-en-v1.5",
+      "retrieval_strategy": "Hybrid Search",
+      "chunking_strategy": "Paragraph",
+      "status": "ready",
+      "created_at": "2026-08-29T14:00:38.858Z",
+      "updated_at": "2026-08-29T14:00:38.858Z"
+    }
+  ],
+  "documents": [
+    {
+      "id": "doc-inv-001",
+      "knowledge_base_id": "kb-inventory-01",
+      "dify_document_id": "dify-doc-inv-001",
+      "name": "Warehouse Standard Operating Procedures (SOP).pdf",
+      "type": "PDF",
+      "size": "5.4 MB",
+      "size_bytes": 5662310,
+      "status": "completed",
+      "chunk_count": 48,
+      "error_message": null,
+      "uploaded_at": "2026-08-29T14:22:00.000Z"
+    },
+    {
+      "id": "doc-inv-002",
+      "knowledge_base_id": "kb-inventory-01",
+      "dify_document_id": "dify-doc-inv-002",
+      "name": "Stock Replenishment & Reorder Thresholds.docx",
+      "type": "DOCX",
+      "size": "2.1 MB",
+      "size_bytes": 2202009,
+      "status": "completed",
+      "chunk_count": 22,
+      "error_message": null,
+      "uploaded_at": "2026-08-29T14:22:00.000Z"
+    }
+  ],
+  "chatbots": [
+    {
+      "id": "cb-inventory-01",
+      "dify_app_id": "dify-app-inv-001",
+      "dify_api_key": "",
+      "name": "Inventory Service Bot",
+      "description": "Assists warehouse teams and customer service agents with stock levels, SKU lookups, reorder points, and order fulfillment guidelines.",
+      "status": "active",
+      "model": "GPT-OSS 120B",
+      "provider": "Groq",
+      "temperature": 0.1,
+      "enable_memory": 1,
+      "strict_knowledge_mode": 1,
+      "total_conversations": 526,
+      "avg_response_time": "0.9s",
+      "created_at": "2026-08-29T14:22:00.000Z",
+      "updated_at": "2026-08-29T14:28:23.757Z"
+    },
+    {
+      "id": "cb-001",
+      "dify_app_id": "dify-app-001",
+      "dify_api_key": "",
+      "name": "Customer Support Bot",
+      "description": "Handles general customer inquiries, returns, refunds, and shipping questions.",
+      "status": "active",
+      "model": "GPT-OSS 120B",
+      "provider": "Groq",
+      "temperature": 0.2,
+      "enable_memory": 1,
+      "strict_knowledge_mode": 1,
+      "total_conversations": 843,
+      "avg_response_time": "1.2s",
+      "created_at": "2026-08-29T14:00:38.858Z",
+      "updated_at": "2026-08-29T14:01:43.193Z"
+    }
+  ],
+  "chatbot_knowledge_bases": [
+    {
+      "chatbot_id": "cb-inventory-01",
+      "knowledge_base_id": "kb-inventory-01"
+    },
+    {
+      "chatbot_id": "cb-001",
+      "knowledge_base_id": "kb-001"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv-fe629325",
+      "chatbot_id": "cb-inventory-01",
+      "chatbot_name": "Inventory Service Bot",
+      "dify_conversation_id": "2aed4ee8-e34c-4b6f-918f-20974e964c85",
+      "title": "What is the stock reorder policy?",
+      "last_message": "I don't have that information in the knowledge base.",
+      "message_count": 12,
+      "created_at": "2026-08-29T14:22:24.403Z",
+      "updated_at": "2026-08-29T14:28:23.756Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-bb93044b",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "What is the stock reorder policy?",
+      "sources": null,
+      "timestamp": "2026-08-29T14:22:24.403Z"
+    },
+    {
+      "id": "msg-cbb8f08b",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I received your question: \"What is the stock reorder policy?\". Here is the answer grounded in your knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:22:24.497Z"
+    },
+    {
+      "id": "msg-1c90310c",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "What all knowledge do you have?",
+      "sources": null,
+      "timestamp": "2026-08-29T14:22:53.390Z"
+    },
+    {
+      "id": "msg-e0a9ea4a",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I received your question: \"What all knowledge do you have?\". Here is the answer grounded in your knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:22:53.459Z"
+    },
+    {
+      "id": "msg-b04d7a0d",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "Hello! What can you help me with?",
+      "sources": null,
+      "timestamp": "2026-08-29T14:26:28.884Z"
+    },
+    {
+      "id": "msg-158f4628",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I received your question: \"Hello! What can you help me with?\". Here is the answer grounded in your knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:26:29.025Z"
+    },
+    {
+      "id": "msg-f12c6247",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "Hello! Who are you?",
+      "sources": null,
+      "timestamp": "2026-08-29T14:27:08.437Z"
+    },
+    {
+      "id": "msg-2729b48e",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I received your question: \"Hello! Who are you?\". Here is the answer grounded in your knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:27:08.564Z"
+    },
+    {
+      "id": "msg-729c9ffa",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "Hi",
+      "sources": null,
+      "timestamp": "2026-08-29T14:27:36.011Z"
+    },
+    {
+      "id": "msg-7919c9c9",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I received your question: \"Hi\". Here is the answer grounded in your knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:27:36.090Z"
+    },
+    {
+      "id": "msg-383d94ad",
+      "conversation_id": "conv-fe629325",
+      "role": "user",
+      "content": "Hi",
+      "sources": null,
+      "timestamp": "2026-08-29T14:28:17.384Z"
+    },
+    {
+      "id": "msg-5467aaba",
+      "conversation_id": "conv-fe629325",
+      "role": "assistant",
+      "content": "I don't have that information in the knowledge base.",
+      "sources": "[]",
+      "timestamp": "2026-08-29T14:28:23.755Z"
+    }
+  ],
+  "settings": []
+}

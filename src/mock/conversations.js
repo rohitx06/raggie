@@ -1,0 +1,111 @@
+export const mockConversations = [
+  {
+    id: 'conv-001',
+    chatbotId: 'cb-001',
+    chatbotName: 'Customer Support Bot',
+    title: 'How do I get a refund?',
+    lastMessage: 'Thank you, that was very helpful!',
+    messageCount: 6,
+    createdAt: '2026-08-29T18:45:00Z',
+    updatedAt: '2026-08-29T18:50:00Z',
+  },
+  {
+    id: 'conv-002',
+    chatbotId: 'cb-002',
+    chatbotName: 'Product Documentation Bot',
+    title: 'Warranty period for Model X?',
+    lastMessage: 'The warranty covers 2 years from purchase date.',
+    messageCount: 4,
+    createdAt: '2026-08-29T17:30:00Z',
+    updatedAt: '2026-08-29T17:35:00Z',
+  },
+  {
+    id: 'conv-003',
+    chatbotId: 'cb-001',
+    chatbotName: 'Customer Support Bot',
+    title: 'Shipping time to California',
+    lastMessage: 'Standard shipping takes 3-5 business days.',
+    messageCount: 3,
+    createdAt: '2026-08-29T16:00:00Z',
+    updatedAt: '2026-08-29T16:05:00Z',
+  },
+  {
+    id: 'conv-004',
+    chatbotId: 'cb-001',
+    chatbotName: 'Customer Support Bot',
+    title: 'Can I exchange a damaged product?',
+    lastMessage: 'Yes, damaged items can be exchanged within 14 days.',
+    messageCount: 5,
+    createdAt: '2026-08-29T14:00:00Z',
+    updatedAt: '2026-08-29T14:12:00Z',
+  },
+  {
+    id: 'conv-005',
+    chatbotId: 'cb-003',
+    chatbotName: 'Onboarding Assistant',
+    title: 'How to set up my account?',
+    lastMessage: "I've completed the setup, thanks!",
+    messageCount: 8,
+    createdAt: '2026-08-29T12:00:00Z',
+    updatedAt: '2026-08-29T12:20:00Z',
+  },
+  {
+    id: 'conv-006',
+    chatbotId: 'cb-002',
+    chatbotName: 'Product Documentation Bot',
+    title: 'Technical specs for Model Y',
+    lastMessage: 'Model Y supports up to 500W power output.',
+    messageCount: 4,
+    createdAt: '2026-08-28T16:00:00Z',
+    updatedAt: '2026-08-28T16:08:00Z',
+  },
+];
+
+export const mockConversationMessages = {
+  'conv-001': [
+    {
+      id: 'm1',
+      role: 'assistant',
+      content: "Hello! I'm your Customer Support Assistant. How can I help you today?",
+      timestamp: '2026-08-29T18:45:00Z',
+      sources: [],
+    },
+    {
+      id: 'm2',
+      role: 'user',
+      content: 'I want to return a product I bought last week. How do I get a refund?',
+      timestamp: '2026-08-29T18:45:30Z',
+    },
+    {
+      id: 'm3',
+      role: 'assistant',
+      content:
+        "I can help you with that! Based on our **30-day return policy**, you're well within the return window.\n\nTo initiate a return and get your refund:\n\n1. Go to **My Orders** in your account\n2. Select the item you want to return\n3. Click **Start Return** and select your reason\n4. Print the prepaid return shipping label\n5. Drop off the package at any authorized shipping location\n\nRefunds are processed within **3-5 business days** once we receive the item. You'll get an email confirmation when the refund is issued.",
+      timestamp: '2026-08-29T18:45:45Z',
+      sources: [
+        { document: 'Refund Policy.pdf', relevance: 0.96, page: 1 },
+        { document: 'Shipping & Delivery.pdf', relevance: 0.72, page: 4 },
+      ],
+    },
+    {
+      id: 'm4',
+      role: 'user',
+      content: 'What if I lost the packaging?',
+      timestamp: '2026-08-29T18:47:00Z',
+    },
+    {
+      id: 'm5',
+      role: 'assistant',
+      content:
+        "No worries! You don't need the original packaging to initiate a return. However, please ensure the item is securely packaged to prevent damage during return shipping. If the item arrives damaged due to inadequate packaging, it may affect your refund amount.",
+      timestamp: '2026-08-29T18:47:20Z',
+      sources: [{ document: 'Refund Policy.pdf', relevance: 0.91, page: 3 }],
+    },
+    {
+      id: 'm6',
+      role: 'user',
+      content: 'Thank you, that was very helpful!',
+      timestamp: '2026-08-29T18:50:00Z',
+    },
+  ],
+};
