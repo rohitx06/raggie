@@ -1,5 +1,5 @@
-# Build stage
-FROM node:20-alpine AS build
+# Build stage (Using Debian glibc node image for 100% Vite/Rollup Linux compatibility)
+FROM node:20-slim AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
